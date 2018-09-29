@@ -1,0 +1,86 @@
+CREATE TABLE `coin` (
+ `id` int(11) NOT NULL,
+ `name` text NOT NULL,
+ `symbol` text NOT NULL,
+ `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ `circulating_supply` float NOT NULL,
+ `total_supply` float NOT NULL,
+ `max_supply` float NOT NULL,
+ `cmc_rank` int(11) NOT NULL,
+ `brl_price` float NOT NULL,
+ `brl_volume_24h` float NOT NULL,
+ `brl_percent_change_1h` float NOT NULL,
+ `brl_percent_change_24h` float NOT NULL,
+ `brl_percent_change_7d` float NOT NULL,
+ `brl_market_cap` float NOT NULL,
+ `usd_price` float NOT NULL,
+ `usd_volume_24h` float NOT NULL,
+ `usd_percent_change_1h` float NOT NULL,
+ `usd_percent_change_24h` float NOT NULL,
+ `usd_percent_change_7d` float NOT NULL,
+ `usd_market_cap` float NOT NULL,
+ `btc_price` float NOT NULL,
+ `btc_volume_24h` float NOT NULL,
+ `btc_percent_change_1h` float NOT NULL,
+ `btc_percent_change_24h` float NOT NULL,
+ `btc_percent_change_7d` float NOT NULL,
+ `btc_market_cap` float NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+
+CREATE TABLE `grupo` (
+ `id` int(11) NOT NULL,
+ `id_usuario` int(11) NOT NULL,
+ `percentual` float NOT NULL DEFAULT '100',
+ PRIMARY KEY (`id`,`id_usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+
+CREATE TABLE `monk_add` (
+ `nome` varchar(100) NOT NULL,
+ `endereco` varchar(50) NOT NULL,
+ `usuario_id` int(11) NOT NULL,
+ `percent` float NOT NULL DEFAULT '100',
+ `MN` tinyint(1) NOT NULL DEFAULT '0',
+ `grupo` int(11) NOT NULL DEFAULT '0',
+ PRIMARY KEY (`nome`,`endereco`,`usuario_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+
+CREATE TABLE `usuarios` (
+ `usuario_id` int(5) NOT NULL AUTO_INCREMENT,
+ `nome` varchar(50) NOT NULL DEFAULT '',
+ `sobrenome` varchar(50) NOT NULL DEFAULT '',
+ `email` varchar(100) NOT NULL DEFAULT '',
+ `usuario` varchar(32) NOT NULL DEFAULT '',
+ `senha` varchar(32) NOT NULL DEFAULT '',
+ `info` text NOT NULL,
+ `celular` varchar(20) NOT NULL,
+ `nivel_usuario` enum('0','1','2') NOT NULL DEFAULT '0',
+ `data_cadastro` datetime DEFAULT NULL,
+ `data_ultimo_login` datetime DEFAULT NULL,
+ `ativado` enum('0','1') NOT NULL DEFAULT '0',
+ PRIMARY KEY (`usuario_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1
+
+
+Alguns selects...
+
+
+
+SELECT `id`, `name`, `symbol`, `timestamp`, `circulating_supply`, `total_supply`, `max_supply`, `cmc_rank`, `brl_price`, `brl_volume_24h`, `brl_percent_change_1h`, `brl_percent_change_24h`, `brl_percent_change_7d`, `brl_market_cap`, `usd_price`, `usd_volume_24h`, `usd_percent_change_1h`, `usd_percent_change_24h`, `usd_percent_change_7d`, `usd_market_cap`, `btc_price`, `btc_volume_24h`, `btc_percent_change_1h`, `btc_percent_change_24h`, `btc_percent_change_7d`, `btc_market_cap` FROM `coin` WHERE 1
+INSERT INTO `coin` (`id`, `name`, `symbol`, `timestamp`, `circulating_supply`, `total_supply`, `max_supply`, `cmc_rank`, `brl_price`, `brl_volume_24h`, `brl_percent_change_1h`, `brl_percent_change_24h`, `brl_percent_change_7d`, `brl_market_cap`, `usd_price`, `usd_volume_24h`, `usd_percent_change_1h`, `usd_percent_change_24h`, `usd_percent_change_7d`, `usd_market_cap`, `btc_price`, `btc_volume_24h`, `btc_percent_change_1h`, `btc_percent_change_24h`, `btc_percent_change_7d`, `btc_market_cap`) VALUES ('2230', 'Monkey Project', 'MONK', CURRENT_TIMESTAMP, '1895509.993342', '2245459.993042', '21000000', '744', '3.3591716781987', '76469.921948993', '-0.6308', '-9.0963', '17.3289', '6367343.485377', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0')
+UPDATE `coin` SET `id`=[value-1],`name`=[value-2],`symbol`=[value-3],`timestamp`=[value-4],`circulating_supply`=[value-5],`total_supply`=[value-6],`max_supply`=[value-7],`cmc_rank`=[value-8],`brl_price`=[value-9],`brl_volume_24h`=[value-10],`brl_percent_change_1h`=[value-11],`brl_percent_change_24h`=[value-12],`brl_percent_change_7d`=[value-13],`brl_market_cap`=[value-14],`usd_price`=[value-15],`usd_volume_24h`=[value-16],`usd_percent_change_1h`=[value-17],`usd_percent_change_24h`=[value-18],`usd_percent_change_7d`=[value-19],`usd_market_cap`=[value-20],`btc_price`=[value-21],`btc_volume_24h`=[value-22],`btc_percent_change_1h`=[value-23],`btc_percent_change_24h`=[value-24],`btc_percent_change_7d`=[value-25],`btc_market_cap`=[value-26] WHERE 1
+
+
+SELECT `nome`, `endereco`, `usuario_id`, `percent`, `MN`, `grupo` FROM `monk_add` WHERE 1
+INSERT INTO `monk_add`(`nome`, `endereco`, `usuario_id`, `percent`, `MN`, `grupo`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6])
+UPDATE `monk_add` SET `nome`=[value-1],`endereco`=[value-2],`usuario_id`=[value-3],`percent`=[value-4],`MN`=[value-5],`grupo`=[value-6] WHERE 1
+
+
+SELECT `usuario_id`, `nome`, `sobrenome`, `email`, `usuario`, `senha`, `info`, `nivel_usuario`, `data_cadastro`, `data_ultimo_login`, `ativado` FROM `usuarios` WHERE 1
+INSERT INTO `usuarios`(`usuario_id`, `nome`, `sobrenome`, `email`, `usuario`, `senha`, `info`, `nivel_usuario`, `data_cadastro`, `data_ultimo_login`, `ativado`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9],[value-10],[value-11])
+UPDATE `usuarios` SET `usuario_id`=[value-1],`nome`=[value-2],`sobrenome`=[value-3],`email`=[value-4],`usuario`=[value-5],`senha`=[value-6],`info`=[value-7],`nivel_usuario`=[value-8],`data_cadastro`=[value-9],`data_ultimo_login`=[value-10],`ativado`=[value-11] WHERE 1
+
+

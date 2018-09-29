@@ -1,1 +1,2 @@
-Testando
+Site para monitorar cryptomoedas via API - Desenvolvido inicialmente para a moeda MONK (Monkey)
+Utilização de APIS da coinexplorer e coinmarketcap
